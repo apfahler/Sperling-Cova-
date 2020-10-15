@@ -7,13 +7,6 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
         const SONA_URL = `<SONA_URL>&survey_code=${survey_code}`
 
         // Define Experiment Trials
-        let WelcomeTrial = {
-            type: 'html-keyboard-response',
-            stimulus:`
-                <p>Welcome to the experiment.</p>
-                <p>Press any key to begin.</p>
-            `
-        }
         timeline = []; 
         
         timeline.push({
@@ -390,14 +383,15 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
           }
          timeline.push(interview);
 
-        let FinalTrial = {
+        var FinalTrial = {
             type: 'instructions',
             pages: [`Thanks for particpating! Please email us at ${CONTACT_EMAIL}.`]
         }
+	timeline.push(FinalTrial); 
 
         // Configure and Start Experiment
         jsPsychHandle.init({
-            timeline: [WelcomeTrial, FinalTrial],
+            timeline: timeline,
             on_trial_finish: session.insert,
             on_finish: function() { window.top.location.href = SONA_URL }
         })
