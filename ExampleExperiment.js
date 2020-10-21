@@ -3,7 +3,7 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
 
     function RunExperiment(session) {
         // Define Constants
-        const CONTACT_EMAIL = 'fake@email.com'
+        const CONTACT_EMAIL = 'apfahler@ufl.edu'
         const SONA_URL = `<SONA_URL>&survey_code=${survey_code}`
 
         // Define Experiment Trials
@@ -26,11 +26,29 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
             cont_btn: "consent-button",
             //check_fn: check_consent
 		  }
+	var briefing = {
+            type: "html-keyboard-response",
+            stimulus: "Before we begin, we would like to ask you a few questions.<br><br>" +
+      		      "Press any key to continue."
+          }
+        var sex = {
+            type: 'survey-multi-choice',
+            questions: [
+                {prompt: "What sex were you assigned at birth, on your original birth certificate?",
+                 name: 'sex', options: ['Female', 'Male', 'Prefer not to respond'], required:true}
+               ],
+          }
+        var age = {
+            type: 'survey-text',
+            questions: [
+                 {prompt: "How old are you?", name: 'Age'}
+                ],
+          }
         var picture = {
             type: 'image-button-response',
             stimulus: "https://apfahler.github.io/jsPsychSheet/experiment/img/armsLength.png",
             choices: ['Continue'],
-            prompt: "<p>Before we begin please make sure that you are approximately one arms length away from you computer screen.<br> A photo is provided above as an example. Press the 'Continue' button when you are ready to move on. "
+            prompt: "<p>Please make sure that you are approximately one arms length away from you computer screen.<br> A photo is provided above as an example. Press the 'Continue' button when you are ready to move on. "
           }
          var instructions = {
              type: 'instructions',
@@ -43,7 +61,7 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
              show_clickable_nav: true
           }
          var intro = {
-             timeline: [welcome, consent, picture, instructions],
+             timeline: [welcome, consent, briefing, sex, age, picture, instructions],
           }
          timeline.push(intro);
 
