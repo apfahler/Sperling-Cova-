@@ -4,7 +4,7 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
     function RunExperiment(session) {
         // Define Constants
         const CONTACT_EMAIL = 'apfahler@ufl.edu'
-        const SONA_URL = `<SONA_URL>&survey_code=${survey_code}`
+        const SONA_URL = `https://ufl.sona-systems.com/webstudy_credit.aspx?experiment_id=147&credit_token=1b0234db08a34870a2b669bbd6da5f90&survey_code=${survey_code}`
 
         // Define Experiment Trials
         timeline = []; 
