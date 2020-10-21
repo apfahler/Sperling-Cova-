@@ -80,7 +80,8 @@ jsPsych.plugins["sperling-canvas"] = (function() {
 
             // data saving 
             var trial_data = {
-              canvas: trial.canvas
+              canvas: trial.canvas,
+              sample: sample
             };
      
       function end_trial(){
