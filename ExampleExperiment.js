@@ -403,7 +403,7 @@ function ExampleExperiment(jsSheetHandle, jsPsychHandle, survey_code) {
 
         var FinalTrial = {
             type: 'instructions',
-            pages: [`Thanks for particpating! Please email us at ${CONTACT_EMAIL}.`]
+            pages: [`Thanks for particpating! Press the 'right-arrow-key' to end the experiment. `]
         }
 	timeline.push(FinalTrial); 
 
